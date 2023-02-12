@@ -5,24 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b477f9aa-6151-4a1c-8947-c281386236ab" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/components/Layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/Nav.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/Users/UsersTableHead.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/Users/UsersTableRow.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/interfaces/users.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/users.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/Poppins/Poppins-Light.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/Poppins/Poppins-Medium.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/fonts/Poppins/Poppins-Regular.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/Logs/LogsTableRow.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/client.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functions/logs-read.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interfaces/logs.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/netlify.toml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/logs.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Nav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Nav.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Users/UsersTableHead.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Users/UsersTableHead.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Users/UsersTableRow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Users/UsersTableRow.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/users-read.ts" beforeDir="false" afterPath="$PROJECT_DIR$/functions/users-read.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/interfaces/users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/interfaces/users.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_app.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/api/hello.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/Home.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/users.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/styles/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +44,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -50,7 +52,7 @@
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.modules.go.list.on.any.changes.was.set" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/styles" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/functions" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -60,6 +62,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/functions" />
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/styles" />
       <recent name="$PROJECT_DIR$/public" />
     </key>

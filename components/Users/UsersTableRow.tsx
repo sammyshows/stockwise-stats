@@ -2,13 +2,14 @@ import { UsersTableRowProp } from "@/interfaces/users";
 
 export default function UsersTableRow(user: UsersTableRowProp) {
   return (
-    <div className={ 'flex justify-between items-center py-1 px-2 cursor-pointer' + (user.index % 2 !== 0 ? ' bg-slate-900' : '')}>
-      <p className="grow px-2 text-sm text-left text-slate-300">{ user.email }</p>
-      <p className="w-40 px-2 text-sm text-right text-slate-300">{ user.deviceModel }</p>
-      <p className="w-32 px-2 text-sm text-right text-slate-300">{ user.accountType }</p>
-      <p className="w-40 px-2 text-sm text-right text-slate-300">{ user.stockwiseVersion }</p>
-      <p className="w-28 px-2 text-sm text-right text-slate-300">{ user.osVersion }</p>
-      <p className="w-28 px-2 text-sm text-right text-slate-300">{ user.dateJoined }</p>
+    <div className={ 'flex justify-between items-center px-2 cursor-pointer' + (user.index % 2 !== 0 ? ' bg-slate-900' : '')}>
+      <p className="h-6 w-12 flex items-center px-2 text-sm text-left text-gray-300 border-r border-gray-500">{ user.index }</p>
+      <p className="h-6 grow flex items-center px-2 text-sm text-left text-gray-300 border-r border-gray-500">{ user.email }</p>
+      <p className="h-6 w-40 flex justify-end items-center px-2 text-sm text-gray-300 border-r border-gray-500">{ user.deviceModel }</p>
+      <p className="h-6 w-40 flex justify-end items-center px-2 text-sm text-gray-300 border-r border-gray-500">{ user.accountType === 0 ? 'Stockwise' : 'Google / Apple' }</p>
+      <p className="h-6 w-40 flex justify-end items-center px-2 text-sm text-gray-300 border-r border-gray-500">{ user.stockwiseVersion }</p>
+      <p className="h-6 w-28 flex justify-end items-center px-2 text-sm text-gray-300 border-r border-gray-500">{ user.deviceOS }</p>
+      <p className="h-6 w-28 flex justify-end items-center px-2 text-sm text-gray-300">{ user.dateJoined }</p>
     </div>
   )
 }

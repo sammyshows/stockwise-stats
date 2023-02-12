@@ -1,0 +1,21 @@
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Headers = "Origin, X-Requested-With, Content-Type, Accept, authorization"
+    Access-Control-Allow-Methods = "GET, PUT, POST"
+
+[dev]
+  command = "yarn dev" # Command to start your dev server
+  port = 8888 # Port that the dev server will be listening on
+  publish = ".output" # Folder with the static content for _redirect file
+
+ # Although there is also this redirect rule in "/public/_redirects", this must be here for local redirects.
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+[functions]
+  directory = "functions"
+  included_files = ["database/client.ts"]

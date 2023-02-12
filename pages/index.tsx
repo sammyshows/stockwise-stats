@@ -4,9 +4,9 @@ import UsersTableRow from "@/components/Users/UsersTableRow";
 
 export default function Users() {
   const users = [
-    { email: 'sammymac.eng@gmail.com', accountType: 'IDP', stockwiseVersion: '1.9', deviceModel: 'SM-GUE3', osVersion: '16.1', dateJoined: '28/06/2022' },
-    { email: 'celinemalfait7@gmail.com', accountType: 'IDP', stockwiseVersion: '1.9', deviceModel: 'SM-GUE3', osVersion: '16.1', dateJoined: '28/06/2022' },
-    { email: 'samrmccarthy6@gmail.com', accountType: 'IDP', stockwiseVersion: '1.9', deviceModel: 'SM-GUE3', osVersion: '16.1', dateJoined: '28/06/2022' }
+    { email: 'sammymac.eng@gmail.com', accountType: 'IDP', stockwiseVersion: '1.9', deviceModel: 'SM-GUE3', deviceOS: '16.1', dateJoined: '28/06/2022' },
+    { email: 'celinemalfait7@gmail.com', accountType: 'IDP', stockwiseVersion: '1.9', deviceModel: 'SM-GUE3', deviceOS: '16.1', dateJoined: '28/06/2022' },
+    { email: 'samrmccarthy6@gmail.com', accountType: 'IDP', stockwiseVersion: '1.9', deviceModel: 'SM-GUE3', deviceOS: '16.1', dateJoined: '28/06/2022' }
   ]
 
   return (
@@ -31,7 +31,7 @@ export default function Users() {
               accountType={ user.accountType }
               stockwiseVersion={ user.stockwiseVersion }
               deviceModel={ user.deviceModel }
-              osVersion={ user.osVersion }
+              deviceOS={ user.deviceOS }
               dateJoined={ user.dateJoined } />
           ))}
         </div>

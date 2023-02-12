@@ -4,7 +4,7 @@ interface UsersTableRowProp {
   accountType: string,
   stockwiseVersion: string,
   deviceModel: string,
-  osVersion: string,
+  deviceOS: string,
   dateJoined: string
 }
 
