@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Spinner from "@/components/Utility/Spinner";
 import LogsTableHead from "@/components/Logs/LogsTableHead";
 import LogsTableRow from "@/components/Logs/LogsTableRow";
 
@@ -18,12 +19,14 @@ export default function Logs() {
       <h1 className="text-5xl pb-10 font-semibold text-emerald-400">Logs</h1>
 
       <div className="flex flex-col grow border border-emerald-800 rounded overflow-scroll">
-        <LogsTableHead />
-        { logs?.map((log, index) => (
+        <LogsTableHead showEmail={ true } />
+        { logs.length ? (logs?.map((log, index) => (
           <LogsTableRow
             key={ index }
             index={ index }
+            showEmail={ true }
             id={ log.id }
+            userId={ log.user_id }
             email={ log.email }
             code={ log.code }
             tag={ log.tag }
@@ -31,7 +34,7 @@ export default function Logs() {
             message={ log.message }
             platform={ log.platform }
             time={ index !== logs.length -1 && logs[index + 1].time === log.time ? '' : log.time } />
-        ))}
+        ))) : (<Spinner />)}
       </div>
     </div>
   )

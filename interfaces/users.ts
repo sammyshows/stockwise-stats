@@ -1,5 +1,6 @@
 interface UsersTableRowProp {
   index: number,
+  id: string,
   email: string,
   accountType: string,
   stockwiseVersion: string,

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Spinner from "@/components/Utility/Spinner";
 import UsersTableHead from "@/components/Users/UsersTableHead";
 import UsersTableRow from "@/components/Users/UsersTableRow";
 
@@ -19,17 +20,18 @@ export default function Users() {
 
       <div className="flex flex-col grow border border-emerald-800 rounded overflow-scroll">
         <UsersTableHead />
-        { users?.map((user, index) => (
+        { users.length ? (users?.map((user, index) => (
           <UsersTableRow
             key={ index }
-            index={ index }
+            index={ index + 1 }
+            id={ user.id }
             email={ user.email }
             accountType={ user.account_type }
             stockwiseVersion={ user.stockwise_version }
             deviceModel={ user.device_model }
             deviceOS={ user.device_os }
             dateJoined={ user.date_joined } />
-        ))}
+        ))) : (<Spinner />)}
       </div>
     </div>
   )

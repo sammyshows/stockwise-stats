@@ -2,10 +2,10 @@ import { Handler } from "@netlify/functions";
 const client = require("../database/client.ts")
 
 const handler: Handler = async (event, context) => {
+  const eventBody = JSON.parse(event.body)
 
   const logs = await client`
       SELECT ua.id,
-             ua.user_id,
              email,
              code,
              tag,
@@ -13,9 +13,8 @@ const handler: Handler = async (event, context) => {
              message,
              platform,
              TO_CHAR(ua.created_at at time zone 'aedt', 'DD/MM/YY HH24:mi') AS time
-      FROM user_activity_logs AS ua LEFT JOIN users AS u ON ua.user_id = u.id 
-      WHERE (email NOT IN ('sammymac.eng@gmail.com', 'v4wgv6sv4k@privaterelay.appleid.com') OR email IS NULL)
-            AND ua.created_at > (NOW() - INTERVAL '3 days')
+      FROM user_activity_logs AS ua INNER JOIN users AS u ON ua.user_id = u.id 
+      WHERE ua.user_id = ${eventBody.userId}
       ORDER BY ua.created_at DESC;`
 
   return {

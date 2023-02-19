@@ -5,22 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b477f9aa-6151-4a1c-8947-c281386236ab" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/components/Logs/LogsTableRow.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/client.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/functions/logs-read.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/interfaces/logs.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/netlify.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/logs.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/Users/UserHolding.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/Users/UserOverview.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/Users/UserPortfolio.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/Users/UserStudy.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functions/user-holdings-read.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functions/user-logs-read.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functions/user-read.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/functions/user-studies-read.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/helpers/math.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interfaces/holding.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interfaces/portfolio.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/users/[user].tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/styles/user.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/styles/utility.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Logs/LogsTableHead.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Logs/LogsTableHead.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Logs/LogsTableRow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Logs/LogsTableRow.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Nav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Nav.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Users/UsersTableHead.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Users/UsersTableHead.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Users/UsersTableRow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Users/UsersTableRow.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/users-read.ts" beforeDir="false" afterPath="$PROJECT_DIR$/functions/users-read.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/logs-read.ts" beforeDir="false" afterPath="$PROJECT_DIR$/functions/logs-read.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/interfaces/logs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/interfaces/logs.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/interfaces/users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/interfaces/users.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_app.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/logs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/logs.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/users.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/styles/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/globals.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
@@ -37,6 +47,16 @@
   <component name="GoLibraries">
     <option name="indexEntireGoPath" value="false" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/components/Users/UserPortfolio.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/interfaces/portfolio.ts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/pages/users/[user].tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/functions/user-holdings-read.ts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/pages/users.tsx" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="NamedScopeManager">
+    <scope name="Stockwise Stats" pattern="*.tsx" />
+  </component>
   <component name="ProjectId" id="2LRqDFzsegghlUWGVAsPTKfdVqb" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -52,16 +72,17 @@
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.modules.go.list.on.any.changes.was.set" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/functions" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/interfaces" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="settings.typescriptcompiler" />
-    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/interfaces" />
       <recent name="$PROJECT_DIR$/functions" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/styles" />
