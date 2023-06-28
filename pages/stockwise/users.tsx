@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Spinner from "@/components/Utility/Spinner";
-import UsersTableHead from "@/components/Users/UsersTableHead";
-import UsersTableRow from "@/components/Users/UsersTableRow";
+import UsersTableHead from "@/components/Stockwise/Users/UsersTableHead";
+import UsersTableRow from "@/components/Stockwise/Users/UsersTableRow";
 
 export default function Users() {
   const [ users, setUsers ] = useState([] as (Array<object>));

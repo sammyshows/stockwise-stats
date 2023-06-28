@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Spinner from "@/components/Utility/Spinner";
-import LogsTableHead from "@/components/Logs/LogsTableHead";
-import LogsTableRow from "@/components/Logs/LogsTableRow";
+import LogsTableHead from "@/components/Stockwise/Logs/LogsTableHead";
+import LogsTableRow from "@/components/Stockwise/Logs/LogsTableRow";
 
 export default function Logs() {
   const [ logs, setLogs ] = useState([] as (Array<object>));

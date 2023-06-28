@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import UserHolding from "@/components/Users/UserHolding";
+import UserHolding from "@/components/Stockwise/Users/UserHolding";
 import { UserHoldingProp } from "@/interfaces/holding";
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 

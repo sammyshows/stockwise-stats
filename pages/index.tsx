@@ -1,41 +1,41 @@
 import Head from 'next/head'
-import UsersTableHead from "@/components/Users/UsersTableHead";
-import UsersTableRow from "@/components/Users/UsersTableRow";
+import Link from 'next/link'
 
-export default function Users() {
-  const users = [
-    { email: 'sammymac.eng@gmail.com', accountType: 'IDP', stockwiseVersion: '1.9', deviceModel: 'SM-GUE3', deviceOS: '16.1', dateJoined: '28/06/2022' },
-    { email: 'celinemalfait7@gmail.com', accountType: 'IDP', stockwiseVersion: '1.9', deviceModel: 'SM-GUE3', deviceOS: '16.1', dateJoined: '28/06/2022' },
-    { email: 'samrmccarthy6@gmail.com', accountType: 'IDP', stockwiseVersion: '1.9', deviceModel: 'SM-GUE3', deviceOS: '16.1', dateJoined: '28/06/2022' }
-  ]
-
+export default function Home() {
   return (
     <>
       <Head>
-        <title>Stockwise Stats</title>
-        <meta name="description" content="Stockwise Stats" />
+        <title>Apps Dashboard</title>
+        <meta name="description" content="Welcome to the Game Stats Dashboard. Select a game to view its statistics." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-      <div className="px-10 pt-10">
-        <h1 className="text-5xl pb-10 font-semibold text-emerald-400">Overview</h1>
-
-        <div className="flex flex-col border border-emerald-800 rounded">
-          <UsersTableHead />
-          { users.map((user, index) => (
-            <UsersTableRow
-              key={ index }
-              index={ index }
-              email={ user.email }
-              accountType={ user.accountType }
-              stockwiseVersion={ user.stockwiseVersion }
-              deviceModel={ user.deviceModel }
-              deviceOS={ user.deviceOS }
-              dateJoined={ user.dateJoined } />
-          ))}
+      <main className="flex flex-col items-center justify-center min-h-screen py-2 bg-slate-800">
+        <h1 className="text-5xl pb-28 font-bold text-slate-100" style={{ fontFamily: 'Poppins-Light' }}>Apps Dashboard</h1>
+        <div className="flex gap-10">
+          <div className="flex flex-col justify-center items-center w-48 h-60 border-2 border-emerald-200 rounded-lg hover:shadow-xl transition cursor-pointer bg-slate-600 transform hover:scale-105">
+            <Link href="/stockwise/logs">
+              <>
+                <img
+                  src="/stockwise-logo.png"
+                  alt="Stockwise logo"
+                  className="w-11/12 mx-auto object-cover"
+                />
+              </>
+            </Link>
+          </div>
+          <div className="flex flex-col justify-center items-center w-48 h-60 border-2 border-ll-orange rounded-lg hover:shadow-xl transition cursor-pointer bg-slate-600 transform hover:scale-105">
+            <Link href="/letterlock/users">
+              <>
+                <img
+                  src="/letterlock-logo.png"
+                  alt="Letterlock logo"
+                  className="w-11/12 mx-auto object-cover"
+                />
+              </>
+            </Link>
+          </div>
         </div>
-      </div>
       </main>
     </>
   )

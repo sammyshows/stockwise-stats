@@ -15,7 +15,7 @@ const handler: Handler = async (event, context) => {
              TO_CHAR(ua.created_at at time zone 'aedt', 'DD/MM/YY HH24:mi') AS time
       FROM user_activity_logs AS ua LEFT JOIN users AS u ON ua.user_id = u.id 
       WHERE (email NOT IN ('sammymac.eng@gmail.com', 'v4wgv6sv4k@privaterelay.appleid.com') OR email IS NULL)
-            AND ua.created_at > (NOW() - INTERVAL '3 days')
+            AND ua.created_at > (NOW() - INTERVAL '5 days')
       ORDER BY ua.created_at DESC;`
 
   return {

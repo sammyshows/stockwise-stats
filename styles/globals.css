@@ -27,6 +27,32 @@
   font-weight: 700;
 }
 
+@font-face {
+  font-family: 'Poppins-Black';
+  src: url('./fonts/Poppins/Poppins-Black.ttf')  format('truetype');
+  font-weight: 900;
+}
+
+.text-regular {
+  font-family: Poppins-Regular;
+}
+
+.text-light {
+  font-family: Poppins-Light;
+}
+
+.text-medium {
+  font-family: Poppins-Medium;
+}
+
+.text-bold {
+  font-family: Poppins-Bold;
+}
+
+.text-extra-bold {
+  font-family: Poppins-Black;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;

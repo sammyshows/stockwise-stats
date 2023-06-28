@@ -1,0 +1,108 @@
+import { Handler } from "@netlify/functions"
+const client = require("../database/client.ts")
+
+const handler: Handler = async (event, context) => {
+
+let users
+let ads
+let levelsMostAds
+let levelsDifficult
+let levelsEasy
+// Import database connection module or define your connection
+
+// Query 1: Active Users / New Users
+const userStats = async () => await client`
+  SELECT
+    COUNT(DISTINCT CASE WHEN updated_at > (NOW() - INTERVAL '1 DAY') THEN user_id END) AS users_active_1_day,
+    COUNT(DISTINCT CASE WHEN updated_at > (NOW() - INTERVAL '7 DAY') THEN user_id END) AS users_active_7_days,
+    COUNT(DISTINCT CASE WHEN updated_at > (NOW() - INTERVAL '28 DAY') THEN user_id END) AS users_active_28_days,
+    COUNT(DISTINCT CASE WHEN created_at > (NOW() - INTERVAL '1 DAY') THEN user_id END) AS users_new_1_day,
+    COUNT(DISTINCT CASE WHEN created_at > (NOW() - INTERVAL '7 DAY') THEN user_id END) AS users_new_7_days,
+    COUNT(DISTINCT CASE WHEN created_at > (NOW() - INTERVAL '28 DAY') THEN user_id END) AS users_new_28_days
+  FROM
+    letterlock_user_stats
+`
+
+// Query 2: Ads watched totals / Ad Averages
+const adsWatchedStats = async () => await client`
+  SELECT
+    COUNT(CASE WHEN ad_type = 'additionalLife' THEN id END) AS ads_lives,
+    COUNT(CASE WHEN ad_type = 'additionalMoves' THEN id END) AS ads_moves,
+    ROUND(COUNT(CASE WHEN ad_type = 'additionalLife' THEN id END) / COUNT(DISTINCT law.user_id)::numeric, 2) AS ads_lives_average,
+    ROUND(COUNT(CASE WHEN ad_type = 'additionalMoves' THEN id END) / COUNT(DISTINCT law.user_id)::numeric, 2) AS ads_moves_average,
+    ROUND(SUM(law.streak) / COUNT(law.id)::numeric, 2) AS ads_streak_average
+  FROM letterlock_ads_watched law
+`
+
+// Query 3: Levels with most Ads Watched
+const levelsMostAdsStats = async () => await client`
+  SELECT current_level_id AS level, COUNT(*) AS ads_watched
+  FROM letterlock_ads_watched
+  GROUP BY current_level_id
+  ORDER BY ads_watched DESC
+  LIMIT 10
+`
+
+// Query 4: Most Difficult Levels
+const levelsDifficultStats = async () => await client`
+  SELECT key AS level,
+    ROUND(SUM((value->>'attemptTally')::int - (value->>'successTally')::int) / COUNT(key)::numeric, 2) AS failed_per_user
+  FROM letterlock_user_stats, jsonb_each(level_history)
+  GROUP BY key
+  HAVING SUM((value->>'attemptTally')::int) > 10
+  ORDER BY failed_per_user DESC
+  LIMIT 10
+`
+
+// Query 5: Most Easy Levels
+const levelsEasyStats = async () => await client`
+  SELECT key AS level,
+    ROUND(SUM((value->>'attemptTally')::int - (value->>'successTally')::int) / COUNT(key)::numeric, 2) AS failed_per_user
+  FROM letterlock_user_stats, jsonb_each(level_history)
+  GROUP BY key
+  HAVING SUM((value->>'attemptTally')::int) > 10
+  ORDER BY failed_per_user ASC
+  LIMIT 10
+`
+
+// Execute the queries
+await Promise.all([
+  userStats(),
+  adsWatchedStats(),
+  levelsMostAdsStats(),
+  levelsDifficultStats(),
+  levelsEasyStats()
+]).then((values) => {
+  // Process the results
+  users = values[0]
+  ads = values[1]
+  levelsMostAds = values[2]
+  levelsDifficult = values[3]
+  levelsEasy = values[4]
+  console.log(users)
+  console.log(ads)
+  console.log(levelsMostAds)
+  console.log(levelsDifficult)
+  console.log(levelsEasy)
+})
+
+// Process the query results and pass the data to your page template or component for rendering
+// You can structure the data according to your needs and pass them as props or variables to the relevant components
+
+
+  return {
+    // headers: {
+    //   'Access-Control-Allow-Origin': 'https://www.admin.stockwise.app',
+    // },
+    body: JSON.stringify({
+      users: users[0],
+      ads: ads[0],
+      levelsMostAds: levelsMostAds,
+      levelsDifficult: levelsDifficult,
+      levelsEasy: levelsEasy
+    }),
+    statusCode: 200
+  }
+}
+
+export { handler }

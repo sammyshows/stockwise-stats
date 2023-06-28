@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router'
 import { formatNumber } from "@/helpers/math"
 import Spinner from "@/components/Utility/Spinner";
-import UserOverview from "@/components/Users/UserOverview";
-import LogsTableHead from "@/components/Logs/LogsTableHead";
-import LogsTableRow from "@/components/Logs/LogsTableRow";
-import UserPortfolio from "@/components/Users/UserPortfolio";
-import UserStudy from "@/components/Users/UserStudy";
+import UserOverview from "@/components/Stockwise/Users/UserOverview";
+import LogsTableHead from "@/components/Stockwise/Logs/LogsTableHead";
+import LogsTableRow from "@/components/Stockwise/Logs/LogsTableRow";
+import UserPortfolio from "@/components/Stockwise/Users/UserPortfolio";
+import UserStudy from "@/components/Stockwise/Users/UserStudy";
 
 export default function Users() {
   const [ activeTab, setActiveTab ] = useState('overview')

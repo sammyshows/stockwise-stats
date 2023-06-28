@@ -2,7 +2,7 @@ interface UsersTableRowProp {
   index: number,
   id: string,
   email: string,
-  accountType: string,
+  accountType: number,
   stockwiseVersion: string,
   deviceModel: string,
   deviceOS: string,
