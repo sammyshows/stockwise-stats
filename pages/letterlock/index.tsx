@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import UserStats from '@/components/Letterlock/Insights/UserStats';
 import AdsStats from '@/components/Letterlock/Insights/AdsStats';
 import LevelsStats from '@/components/Letterlock/Insights/LevelsStats';
-import Spinner from "@/components/Utility/Spinner";
 
 
 export default function Insights() {

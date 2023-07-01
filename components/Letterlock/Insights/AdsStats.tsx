@@ -41,7 +41,7 @@ export default function AdsStats(props) {
           </div>
           <div className="flex justify-between">
             <div>
-              <p className="w-20 text-slate-500 text-xs font-bold">streak when ad watched</p>
+              <p className="w-20 text-slate-500 text-xs font-bold">streak when moves ad</p>
               <p className="text-4xl text-medium">{ adsStreakAverage }</p>
             </div>
             <div>

@@ -30,7 +30,7 @@ const adsWatchedStats = async () => await client`
     COUNT(CASE WHEN ad_type = 'additionalMoves' THEN id END) AS ads_moves,
     ROUND(COUNT(CASE WHEN ad_type = 'additionalLife' THEN id END) / COUNT(DISTINCT law.user_id)::numeric, 2) AS ads_lives_average,
     ROUND(COUNT(CASE WHEN ad_type = 'additionalMoves' THEN id END) / COUNT(DISTINCT law.user_id)::numeric, 2) AS ads_moves_average,
-    ROUND(SUM(law.streak) / COUNT(law.id)::numeric, 2) AS ads_streak_average
+    ROUND(SUM(CASE WHEN ad_type = 'additionalMoves' THEN law.streak ELSE 0 END) / COUNT(CASE WHEN ad_type = 'additionalMoves' THEN 1 ELSE 0 END)::numeric, 2) AS ads_streak_average
   FROM letterlock_ads_watched law
 `
 
@@ -47,7 +47,7 @@ const levelsMostAdsStats = async () => await client`
 const levelsDifficultStats = async () => await client`
   SELECT key AS level,
     ROUND(SUM((value->>'attemptTally')::int - (value->>'successTally')::int) / COUNT(key)::numeric, 2) AS failed_per_user
-  FROM letterlock_user_stats, jsonb_each(level_history)
+  FROM letterlock_user_stats, jsonb_each(CAST(level_history AS jsonb))
   GROUP BY key
   HAVING SUM((value->>'attemptTally')::int) > 10
   ORDER BY failed_per_user DESC
@@ -58,7 +58,7 @@ const levelsDifficultStats = async () => await client`
 const levelsEasyStats = async () => await client`
   SELECT key AS level,
     ROUND(SUM((value->>'attemptTally')::int - (value->>'successTally')::int) / COUNT(key)::numeric, 2) AS failed_per_user
-  FROM letterlock_user_stats, jsonb_each(level_history)
+  FROM letterlock_user_stats, jsonb_each(CAST(level_history AS jsonb))
   GROUP BY key
   HAVING SUM((value->>'attemptTally')::int) > 10
   ORDER BY failed_per_user ASC
@@ -79,11 +79,6 @@ await Promise.all([
   levelsMostAds = values[2]
   levelsDifficult = values[3]
   levelsEasy = values[4]
-  console.log(users)
-  console.log(ads)
-  console.log(levelsMostAds)
-  console.log(levelsDifficult)
-  console.log(levelsEasy)
 })
 
 // Process the query results and pass the data to your page template or component for rendering
