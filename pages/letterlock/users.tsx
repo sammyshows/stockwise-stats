@@ -25,11 +25,12 @@ export default function Users() {
             key={ user.id }
             index={ index + 1 }
             id={ user.id }
+            username={ user.username }
+            deviceModel={ user.device_model }
             levelsCompleted={ user.levels_completed_count }
             adsWatchedCount={ user.ads_watched_lives + user.ads_watched_moves }
             zeroLivesCount={ user.zero_lives_tally }
-            stockwiseVersion={ user.stockwise_version }
-            deviceModel={ user.device_model }
+            letterlockVersion={ user.letterlock_version }
             deviceOS={ user.device_os }
             updatedAt={ user.updated_at }
             createdAt={ user.created_at } />

@@ -32,7 +32,7 @@ export default function Insights() {
       <h1 className="text-5xl pb-10 font-semibold text-blue-600">Insights</h1>
 
       <div className="flex flex-col gap-y-6">
-        <div className="flex gap-x-10">
+        <div className="flex">
           <UserStats
             usersActive1Day={userStats.users_active_1_day}
             usersActive7Days={userStats.users_active_7_days}
@@ -43,17 +43,22 @@ export default function Insights() {
           />
 
           <AdsStats
+            androidUsers={ userStats.android_users }
+            iosUsers={ userStats.ios_users }
+            adsToday={ adsStats.ads_today }
+            adsYesterday={ adsStats.ads_yesterday }
+            adsTodayLastWeek={ adsStats.ads_today_last_week }
             adsLives={ adsStats.ads_lives }
             adsMoves={ adsStats.ads_moves }
             adsLivesAverage={ adsStats.ads_lives_average }
             adsMovesAverage={ adsStats.ads_moves_average }
             adsStreakAverage={ adsStats.ads_streak_average }
-            levelsMostAds={ levelsMostAds } 
           />
         </div>
         <LevelsStats 
           levelsDifficult={ levelsDifficult }
           levelsEasy={ levelsEasy }
+          levelsMostAds={ levelsMostAds }
         />
       </div>
     </div>
