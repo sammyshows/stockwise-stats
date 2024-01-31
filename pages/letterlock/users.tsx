@@ -4,7 +4,7 @@ import UsersTableHead from "@/components/Letterlock/Users/UsersTableHead";
 import UsersTableRow from "@/components/Letterlock/Users/UsersTableRow";
 
 export default function Users() {
-  const [ users, setUsers ] = useState([] as (Array<object>));
+  const [ users, setUsers ] = useState([] as (Array<any>));
   useEffect(() => {
     const getUsers = async (): Promise<void> => {
       return await fetch('/api/letterlock-users-read')

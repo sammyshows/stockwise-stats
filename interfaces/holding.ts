@@ -1,4 +1,6 @@
 interface UserHoldingProp {
+  ref: any,
+  id: string,
   index: number,
   symbol: string,
   name: string,

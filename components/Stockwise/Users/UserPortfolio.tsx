@@ -3,7 +3,7 @@ import UserHolding from "@/components/Stockwise/Users/UserHolding";
 import { UserHoldingProp } from "@/interfaces/holding";
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
-export default function UserPortfolio(portfolio: Array<UserHoldingProp>) {
+export default function UserPortfolio(portfolio: any) {
   const [ showAllHoldings, setShowAllHoldings ] = useState(false) // if false a maximum 3 holdings are shown
 
   const holdings = useMemo(() => {

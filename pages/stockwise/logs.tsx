@@ -4,7 +4,7 @@ import LogsTableHead from "@/components/Stockwise/Logs/LogsTableHead";
 import LogsTableRow from "@/components/Stockwise/Logs/LogsTableRow";
 
 export default function Logs() {
-  const [ logs, setLogs ] = useState([] as (Array<object>));
+  const [ logs, setLogs ] = useState([] as (Array<any>));
   useEffect(() => {
     const getLogs = async (): Promise<void> => {
       return await fetch('/api/logs-read')

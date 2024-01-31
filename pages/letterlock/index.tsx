@@ -6,8 +6,8 @@ import LevelsStats from '@/components/Letterlock/Insights/LevelsStats';
 
 
 export default function Insights() {
-  const [userStats, setUserStats] = useState([]);
-  const [adsStats, setAdsStats] = useState([]);
+  const [userStats, setUserStats] = useState({} as any);
+  const [adsStats, setAdsStats] = useState({} as any);
   const [levelsMostAds, setLevelsMostAds] = useState([]);
   const [levelsDifficult, setLevelsDifficult] = useState([]);
   const [levelsEasy, setLevelsEasy] = useState([]);

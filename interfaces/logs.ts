@@ -7,7 +7,7 @@ interface LogsTableRowProp {
   tag: string,
   message: string,
   platform: string,
-  time: string
+  time: string,
 }
 
 export type { LogsTableRowProp }

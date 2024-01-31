@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { LogsTableRowProp } from "@/interfaces/logs";
 
-export default function LogsTableRow(log: LogsTableRowProp) {
+export default function LogsTableRow(log: any) {
   const router = useRouter()
   
   return (

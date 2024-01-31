@@ -2,6 +2,7 @@ import { Handler } from "@netlify/functions";
 const client = require("../database/client.ts")
 
 const handler: Handler = async (event, context) => {
+  if (!event.body) return { statusCode: 400, body: 'invalid request, you are missing the parameter body' }
   const eventBody = JSON.parse(event.body)
 
   const logs = await client`

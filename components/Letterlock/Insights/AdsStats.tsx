@@ -13,7 +13,7 @@ export default function AdsStats(props) {
   } = props
 
   const date = new Date();
-  const options = { weekday: 'long' };
+  const options: Intl.DateTimeFormatOptions = { weekday: 'long' };
   const dayName = date.toLocaleDateString(undefined, options);
 
   return (

@@ -18,7 +18,7 @@ export default function LevelsStats(props) {
             <p className="w-1/2 px-2 text-center">Failed / User</p>
           </div>
 
-          { levelsDifficult.map((level: object, index: number) => (
+          { levelsDifficult.map((level: { level: string, failed_per_user: string }, index: number) => (
             <div key={ index } className={"w-4/5 flex items-center px-2 text-sm text-slate-600 text-medium " + (index % 2 !== 0 ? 'bg-slate-100/70' : '')}>
               <p className="w-1/2 px-2 text-center">{ level.level }</p>
               <p className="w-1/2 px-2 text-center">{ level.failed_per_user }</p>
@@ -38,7 +38,7 @@ export default function LevelsStats(props) {
             <p className="w-1/2 px-2 text-center">Failed / User</p>
           </div>
 
-          { levelsEasy.map((level: object, index: number) => (
+          { levelsEasy.map((level: { level: string, failed_per_user: string }, index: number) => (
             <div key={ index } className={"w-4/5 flex items-center px-2 text-sm text-slate-600 text-medium " + (index % 2 !== 0 ? 'bg-slate-100/70' : '')}>
               <p className="w-1/2 px-2 text-center">{ level.level }</p>
               <p className="w-1/2 px-2 text-center">{ level.failed_per_user }</p>
@@ -58,7 +58,7 @@ export default function LevelsStats(props) {
             <p className="w-1/2 px-2 text-center">Ads Watched</p>
           </div>
 
-          { levelsMostAds.map((level: object, index: number) => (
+          { levelsMostAds.map((level: { level: string, ads_watched: string }, index: number) => (
           <div key={ index } className={"w-4/5 flex items-center px-2 text-sm text-slate-600 text-medium " + (index % 2 !== 0 ? 'bg-slate-100/70' : '')}>
             <p className="w-1/2 px-2 text-center">{ level.level }</p>
             <p className="w-1/2 px-2 text-center">{ level.ads_watched }</p>

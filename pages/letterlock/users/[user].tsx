@@ -10,11 +10,11 @@ import UserStudy from "@/components/Stockwise/Users/UserStudy";
 
 export default function Users() {
   const [ activeTab, setActiveTab ] = useState('overview')
-  const [ user, setUser ] = useState(null as (object | null))
-  const [ logs, setLogs ] = useState(null as (Array<object> | null))
-  const [ portfolios, setPortfolios ] = useState(null as (Array<object> | null))
-  const [ inProgressStudies, setInProgressStudies ] = useState(null as (Array<object> | null))
-  const [ completedStudies, setCompletedStudies ] = useState(null as (Array<object> | null))
+  const [ user, setUser ] = useState(null as (any | null))
+  const [ logs, setLogs ] = useState(null as (Array<any> | null))
+  const [ portfolios, setPortfolios ] = useState(null as any)
+  const [ inProgressStudies, setInProgressStudies ] = useState(null as (Array<any> | null))
+  const [ completedStudies, setCompletedStudies ] = useState(null as (Array<any> | null))
   const userId = useRouter().query.user
 
   useEffect(() => {
@@ -97,7 +97,7 @@ export default function Users() {
 
         <p className="my-2 text-slate-500">
           Joined on { new Date(user.created_at).toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) }
-          <span className="ml-2 text-xs">({ formatNumber(Math.abs(Date.now() - new Date(user.created_at)) / 1000, 2, false).slice(0,-3) } seconds ago...)</span>
+          <span className="ml-2 text-xs">({ formatNumber((Math.abs(Date.now() - new Date(user.created_at).getUTCSeconds()) / 1000).toString(), 2, false)?.slice(0,-3) } seconds ago...)</span>
         </p>
 
         <div className="flex justify-start gap-x-4 border-b-4 border-amber-600/40 my-4 font-bold">
@@ -137,7 +137,7 @@ export default function Users() {
 
         { activeTab === 'portfolios' &&
           <div className="grid grid-cols-3 gap-y-6 py-3">
-            { Object.keys(portfolios).map((key) => (
+            { portfolios && Object.keys(portfolios).map((key) => (
               <UserPortfolio holdings={ portfolios[key] }
                              key={ key } />
             ))}
@@ -148,7 +148,7 @@ export default function Users() {
           <div className="h-full grid grid-cols-2 p-3 divide-x-2 divide-slate-300">
             <div className="w-full flex flex-col items-center gap-y-4">
               <h2 className="text-lg text-emerald-500">IN PROGRESS</h2>
-              { inProgressStudies.map((study, index) => (
+              { inProgressStudies?.map((study, index) => (
                 <UserStudy { ...study }
                            key={ index }
                            index={ index } />
@@ -157,7 +157,7 @@ export default function Users() {
 
             <div className="w-full flex flex-col items-center gap-y-4">
               <h2 className="text-lg text-emerald-500">COMPLETED</h2>
-              { completedStudies.map((study, index) => (
+              { completedStudies?.map((study, index) => (
                 <UserStudy { ...study }
                            completed={ true }
                            key={ index }
