@@ -25,7 +25,7 @@ export default function Home() {
             </Link>
           </div>
           <div className="flex flex-col justify-center items-center w-48 h-60 border-2 border-ll-orange rounded-lg hover:shadow-xl transition cursor-pointer bg-slate-600 transform hover:scale-105">
-            <Link href="/letterlock/users">
+            <Link href="/letterlock">
               <>
                 <img
                   src="/letterlock-logo.png"
