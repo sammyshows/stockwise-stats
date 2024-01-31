@@ -30,7 +30,8 @@ const LoginPage = () => {
       router.push('/');
       // You can store the token in localStorage or handle it as needed
     } catch (error) {
-      setMessage(error.message);
+      setMessage('Login failed.');
+      console.error(error);
     }
   };
 

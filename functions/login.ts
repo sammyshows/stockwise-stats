@@ -1,5 +1,5 @@
-const jwt = require('jsonwebtoken');
-const cookie = require('cookie');
+import jwt from 'jsonwebtoken'
+import cookie from 'cookie'
 
 const users = [{ username: 'sammc', password: 'funlock99!' }];
 const JWT_SECRET = 'd56gy7vtrcd865yujhbgy896';
