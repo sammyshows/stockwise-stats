@@ -12,10 +12,10 @@ export default function Nav() {
       </Navbar.Brand>
       <Navbar.Toggle />
       <Navbar.Collapse>
-        <Navbar.Link href="/users">
+        <Navbar.Link href="/stockwise/users">
           <span className={ routePath.split('/')[2] === 'users' ? 'text-emerald-500 underline underline-offset-4' : 'text-slate-500' }>Users</span>
         </Navbar.Link>
-        <Navbar.Link href="/logs">
+        <Navbar.Link href="/stockwise/logs">
           <span className={ `pr-10 ${routePath.split('/')[2] === 'logs' ? 'text-emerald-500 underline underline-offset-4' : 'text-slate-500' }` }>Logs</span>
         </Navbar.Link>
       </Navbar.Collapse>
