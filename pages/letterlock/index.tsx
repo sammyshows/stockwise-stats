@@ -45,9 +45,9 @@ export default function Insights() {
           <AdsStats
             androidUsers={ userStats.android_users }
             iosUsers={ userStats.ios_users }
-            adsToday={ adsStats.ads_today }
-            adsYesterday={ adsStats.ads_yesterday }
-            adsTodayLastWeek={ adsStats.ads_today_last_week }
+            ads1Day={ adsStats.ads_1_day }
+            ads7Days={ adsStats.ads_7_days }
+            ads28Days={ adsStats.ads_28_days }
             adsLives={ adsStats.ads_lives }
             adsMoves={ adsStats.ads_moves }
             adsLivesAverage={ adsStats.ads_lives_average }

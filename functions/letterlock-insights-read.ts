@@ -35,9 +35,9 @@ const handler: Handler = async (event, context) => {
       ROUND(COUNT(CASE WHEN ad_type = 'additionalLife' THEN id END) / COUNT(DISTINCT law.user_id)::numeric, 2) AS ads_lives_average,
       ROUND(COUNT(CASE WHEN ad_type = 'additionalMoves' THEN id END) / COUNT(DISTINCT law.user_id)::numeric, 2) AS ads_moves_average,
       ROUND(SUM(CASE WHEN ad_type = 'additionalMoves' THEN law.streak ELSE 0 END) / COUNT(CASE WHEN ad_type = 'additionalMoves' THEN 1 ELSE 0 END)::numeric, 2) AS ads_streak_average,
-      COUNT(CASE WHEN (created_at AT TIME ZONE 'Australia/Melbourne') >= date_trunc('day', CURRENT_TIMESTAMP AT TIME ZONE 'Australia/Melbourne') AND (created_at AT TIME ZONE 'Australia/Melbourne') <= (date_trunc('day', CURRENT_TIMESTAMP AT TIME ZONE 'Australia/Melbourne') + INTERVAL '1 DAY' - INTERVAL '1 SECOND') THEN id END) AS ads_today,
-      COUNT(CASE WHEN (created_at AT TIME ZONE 'Australia/Melbourne') >= date_trunc('day', CURRENT_TIMESTAMP AT TIME ZONE 'Australia/Melbourne' - INTERVAL '1 DAY') AND (created_at AT TIME ZONE 'Australia/Melbourne') <= (date_trunc('day', CURRENT_TIMESTAMP AT TIME ZONE 'Australia/Melbourne' - INTERVAL '1 DAY') + INTERVAL '1 DAY') THEN id END) AS ads_yesterday,
-      COUNT(CASE WHEN (created_at AT TIME ZONE 'Australia/Melbourne') >= date_trunc('day', CURRENT_TIMESTAMP AT TIME ZONE 'Australia/Melbourne' - INTERVAL '7 DAY') AND (created_at AT TIME ZONE 'Australia/Melbourne') <= (date_trunc('day', CURRENT_TIMESTAMP AT TIME ZONE 'Australia/Melbourne' - INTERVAL '7 DAY') + INTERVAL '1 DAY') THEN id END) AS ads_today_last_week
+      COUNT(CASE WHEN created_at > (NOW() AT TIME ZONE 'Australia/Melbourne' - INTERVAL '1 DAY') THEN id END) AS ads_1_day,
+      COUNT(CASE WHEN created_at > (NOW() AT TIME ZONE 'Australia/Melbourne' - INTERVAL '7 DAY') THEN id END) AS ads_7_days,
+      COUNT(CASE WHEN created_at > (NOW() AT TIME ZONE 'Australia/Melbourne' - INTERVAL '28 DAY') THEN id END) AS ads_28_days
     FROM letterlock_ads_watched law
     WHERE user_id NOT IN ('81845c27-18fb-4a7b-8fb6-9046c949deb7', '9e5a2c95-4244-4a2a-87bb-3cdb377c67e7');
     `
@@ -93,8 +93,6 @@ const handler: Handler = async (event, context) => {
     levelsDifficult = values[3]
     levelsEasy = values[4]
   })
-
-  console.log('here')
 
   // Process the query results and pass the data to your page template or component for rendering
   // You can structure the data according to your needs and pass them as props or variables to the relevant components

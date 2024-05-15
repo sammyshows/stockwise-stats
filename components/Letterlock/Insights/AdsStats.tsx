@@ -2,9 +2,9 @@ export default function AdsStats(props) {
   const {
     androidUsers,
     iosUsers,
-    adsToday,
-    adsYesterday,
-    adsTodayLastWeek,
+    ads1Day,
+    ads7Days,
+    ads28Days,
     adsLives,
     adsMoves,
     adsLivesAverage,
@@ -50,21 +50,21 @@ export default function AdsStats(props) {
           <div className="p-3 bg-ll-orange rounded-l-xl">
             <div className="h-36 w-full flex flex-col justify-between py-3 px-6 bg-white rounded-2xl drop-shadow text-slate-600 duration-100">
               <div className="flex justify-between items-center pb-2">
-                <img src="/icons/clapper-board.svg" alt="Users" className="h-8 w-8" />
-                <p className="text-xl text-regular">Ads Watched</p>
+                <img src="/icons/clapper-board.svg" alt="Ads" className="h-8 w-8" />
+                <p className="text-xl text-regular">Ads Watched Last</p>
               </div>
               <div className="flex justify-between">
                 <div>
-                  <p className="text-slate-500 text-xs font-bold">today</p>
-                  <p className="text-4xl text-medium">{ adsToday }</p>
+                  <p className="text-slate-500 text-xs font-bold">24 hr</p>
+                  <p className="text-4xl text-medium">{ ads1Day }</p>
                 </div>
                 <div>
-                  <p className="text-slate-500 text-xs font-bold lowercase">last { dayName }</p>
-                  <p className="text-4xl text-medium">{ adsTodayLastWeek }</p>
+                  <p className="text-slate-500 text-xs font-bold">7 days</p>
+                  <p className="text-4xl text-medium">{ ads7Days }</p>
                 </div>
                 <div>
-                  <p className="text-slate-500 text-xs font-bold">yesterday</p>
-                  <p className="text-4xl text-medium">{ adsYesterday }</p>
+                  <p className="text-slate-500 text-xs font-bold">28 days</p>
+                  <p className="text-4xl text-medium">{ ads28Days }</p>
                 </div>
               </div>
             </div>
