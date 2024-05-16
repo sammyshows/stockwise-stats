@@ -8,6 +8,7 @@ const handler: Handler = async (event, context) => {
   let levelsMostAds
   let levelsDifficult
   let levelsEasy
+  let levelProgress
   // Import database connection module or define your connection
   
   // Query 1: Active Users / New Users
@@ -77,6 +78,19 @@ const handler: Handler = async (event, context) => {
     LIMIT 10;
   `
 
+  // Query 6: Level attempts and successes
+  const levelProgressStats = async () => await client`
+    SELECT
+      COUNT(CASE WHEN log_type = 1 AND created_at > (NOW() - INTERVAL '1 DAY') THEN log_id END) AS level_attempts_1_day,
+      COUNT(CASE WHEN log_type = 1 AND created_at > (NOW() - INTERVAL '7 DAY') THEN log_id END) AS level_attempts_7_days,
+      COUNT(CASE WHEN log_type = 1 AND created_at > (NOW() - INTERVAL '28 DAY') THEN log_id END) AS level_attempts_28_days,
+      COUNT(CASE WHEN log_type = 2 AND created_at > (NOW() - INTERVAL '1 DAY') THEN log_id END) AS level_successes_1_day,
+      COUNT(CASE WHEN log_type = 2 AND created_at > (NOW() - INTERVAL '7 DAY') THEN log_id END) AS level_successes_7_days,
+      COUNT(CASE WHEN log_type = 2 AND created_at > (NOW() - INTERVAL '28 DAY') THEN log_id END) AS level_successes_28_days
+    FROM letterlock_logs
+    WHERE user_id NOT IN ('81845c27-18fb-4a7b-8fb6-9046c949deb7', '9e5a2c95-4244-4a2a-87bb-3cdb377c67e7');
+  `
+
 
   // Execute the queries
   await Promise.all([
@@ -84,14 +98,16 @@ const handler: Handler = async (event, context) => {
     adsWatchedStats(),
     levelsMostAdsStats(),
     levelsDifficultStats(),
-    levelsEasyStats()
+    levelsEasyStats(),
+    levelProgressStats()
   ]).then((values) => {
     // Process the results
     users = values[0]
     ads = values[1]
     levelsMostAds = values[2]
     levelsDifficult = values[3]
-    levelsEasy = values[4]
+    levelsEasy = values[4],
+    levelProgress = values[5]
   })
 
   // Process the query results and pass the data to your page template or component for rendering
@@ -105,9 +121,10 @@ const handler: Handler = async (event, context) => {
     body: JSON.stringify({
       users: users[0],
       ads: ads[0],
-      levelsMostAds: levelsMostAds,
-      levelsDifficult: levelsDifficult,
-      levelsEasy: levelsEasy
+      levelsMostAds,
+      levelsDifficult,
+      levelsEasy,
+      levelProgress: levelProgress[0]
     }),
     statusCode: 200
   }
