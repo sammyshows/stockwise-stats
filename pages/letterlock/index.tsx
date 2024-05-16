@@ -69,7 +69,6 @@ export default function Insights() {
           levelsMostAds={ levelsMostAds }
         />
       </div>
-      <p>{ JSON.stringify(levelProgressStats) }</p>
     </div>
   )
 }
