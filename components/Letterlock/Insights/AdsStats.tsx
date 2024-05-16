@@ -52,21 +52,30 @@ export default function AdsStats(props) {
           <div className="p-3 bg-indigo-600 rounded-t-xl">
             <div className="h-36 w-full flex flex-col justify-between py-3 px-6 bg-white rounded-2xl drop-shadow text-slate-600 duration-100">
               <div className="flex justify-between items-center pb-2">
-                <img src="/icons/clapper-board.svg" alt="Ads" className="h-8 w-8" />
-                <p className="text-xl text-regular">Level Attempts</p>
+                <img src="/icons/lock.svg" alt="Ads" className="h-8 w-8" />
+                <p className="text-xl text-regular">Levels Accomplished</p>
               </div>
               <div className="flex justify-between">
                 <div>
                   <p className="text-slate-500 text-xs font-bold">24 hr</p>
-                  <p className="text-4xl text-medium">{ levelAttempts1Day }</p>
+                  <p className="relative w-min text-4xl text-medium">
+                    { levelSuccesses1Day }
+                    <span className="absolute -top-0.5 -right-3.5 text-base text-gray-400">{ levelAttempts1Day }</span>
+                  </p>
                 </div>
                 <div>
                   <p className="text-slate-500 text-xs font-bold">7 days</p>
-                  <p className="text-4xl text-medium">{ levelAttempts7Days }</p>
+                  <p className="relative w-min text-4xl text-medium">
+                    { levelSuccesses7Days }
+                    <span className="absolute -top-0.5 -right-3.5 text-base text-gray-400">{ levelAttempts7Days }</span>
+                  </p>
                 </div>
                 <div>
                   <p className="text-slate-500 text-xs font-bold">28 days</p>
-                  <p className="text-4xl text-medium">{ levelAttempts28Days }</p>
+                  <p className="relative w-min text-4xl text-medium">
+                    { levelSuccesses28Days }
+                    <span className="absolute -top-0.5 -right-3.5 text-base text-gray-400">{ levelAttempts28Days }</span>
+                  </p>
                 </div>
               </div>
             </div>

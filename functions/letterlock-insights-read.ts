@@ -24,7 +24,7 @@ const handler: Handler = async (event, context) => {
       COUNT(DISTINCT CASE WHEN lus.platform = 'ios' THEN user_id END) AS ios_users
     FROM
       letterlock_user_stats lus
-    WHERE user_id NOT IN ('81845c27-18fb-4a7b-8fb6-9046c949deb7', '9e5a2c95-4244-4a2a-87bb-3cdb377c67e7');
+    WHERE user_id NOT IN ('81845c27-18fb-4a7b-8fb6-9046c949deb7', '9e5a2c95-4244-4a2a-87bb-3cdb377c67e7', '11fd76ee-7cc5-4adb-bac0-3aa7051515ae');
   `
 
   // Query 2: Ads watched totals / Ad Averages
@@ -40,7 +40,7 @@ const handler: Handler = async (event, context) => {
       COUNT(CASE WHEN created_at > (NOW() AT TIME ZONE 'Australia/Melbourne' - INTERVAL '7 DAY') THEN id END) AS ads_7_days,
       COUNT(CASE WHEN created_at > (NOW() AT TIME ZONE 'Australia/Melbourne' - INTERVAL '28 DAY') THEN id END) AS ads_28_days
     FROM letterlock_ads_watched law
-    WHERE user_id NOT IN ('81845c27-18fb-4a7b-8fb6-9046c949deb7', '9e5a2c95-4244-4a2a-87bb-3cdb377c67e7');
+    WHERE user_id NOT IN ('81845c27-18fb-4a7b-8fb6-9046c949deb7', '9e5a2c95-4244-4a2a-87bb-3cdb377c67e7', '11fd76ee-7cc5-4adb-bac0-3aa7051515ae');
     `
 
 
@@ -48,7 +48,7 @@ const handler: Handler = async (event, context) => {
   const levelsMostAdsStats = async () => await client`
     SELECT current_level_id AS level, COUNT(*) AS ads_watched
     FROM letterlock_ads_watched
-    WHERE user_id NOT IN ('81845c27-18fb-4a7b-8fb6-9046c949deb7', '9e5a2c95-4244-4a2a-87bb-3cdb377c67e7')
+    WHERE user_id NOT IN ('81845c27-18fb-4a7b-8fb6-9046c949deb7', '9e5a2c95-4244-4a2a-87bb-3cdb377c67e7', '11fd76ee-7cc5-4adb-bac0-3aa7051515ae')
     GROUP BY current_level_id
     ORDER BY ads_watched DESC
     LIMIT 10;
@@ -59,7 +59,7 @@ const handler: Handler = async (event, context) => {
     SELECT key AS level,
       ROUND(SUM((value->>'attemptTally')::int - (value->>'successTally')::int) / COUNT(key)::numeric, 2) AS failed_per_user
     FROM letterlock_user_stats, jsonb_each(CAST(level_history AS jsonb))
-    WHERE user_id NOT IN ('81845c27-18fb-4a7b-8fb6-9046c949deb7', '9e5a2c95-4244-4a2a-87bb-3cdb377c67e7')
+    WHERE user_id NOT IN ('81845c27-18fb-4a7b-8fb6-9046c949deb7', '9e5a2c95-4244-4a2a-87bb-3cdb377c67e7', '11fd76ee-7cc5-4adb-bac0-3aa7051515ae')
     GROUP BY key
     HAVING SUM((value->>'attemptTally')::int) > 10
     ORDER BY failed_per_user DESC
@@ -71,7 +71,7 @@ const handler: Handler = async (event, context) => {
     SELECT key AS level,
       ROUND(SUM((value->>'attemptTally')::int - (value->>'successTally')::int) / COUNT(key)::numeric, 2) AS failed_per_user
     FROM letterlock_user_stats, jsonb_each(CAST(level_history AS jsonb))
-    WHERE user_id NOT IN ('81845c27-18fb-4a7b-8fb6-9046c949deb7', '9e5a2c95-4244-4a2a-87bb-3cdb377c67e7')
+    WHERE user_id NOT IN ('81845c27-18fb-4a7b-8fb6-9046c949deb7', '9e5a2c95-4244-4a2a-87bb-3cdb377c67e7', '11fd76ee-7cc5-4adb-bac0-3aa7051515ae')
     GROUP BY key
     HAVING SUM((value->>'attemptTally')::int) > 10
     ORDER BY failed_per_user ASC
@@ -88,7 +88,7 @@ const handler: Handler = async (event, context) => {
       COUNT(CASE WHEN log_type = 2 AND created_at > (NOW() - INTERVAL '7 DAY') THEN log_id END) AS level_successes_7_days,
       COUNT(CASE WHEN log_type = 2 AND created_at > (NOW() - INTERVAL '28 DAY') THEN log_id END) AS level_successes_28_days
     FROM letterlock_logs
-    WHERE user_id NOT IN ('81845c27-18fb-4a7b-8fb6-9046c949deb7', '9e5a2c95-4244-4a2a-87bb-3cdb377c67e7');
+    WHERE user_id NOT IN ('81845c27-18fb-4a7b-8fb6-9046c949deb7', '9e5a2c95-4244-4a2a-87bb-3cdb377c67e7', '11fd76ee-7cc5-4adb-bac0-3aa7051515ae');
   `
 
 
