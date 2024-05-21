@@ -4,10 +4,11 @@ import UsersTableHead from "@/components/Letterlock/Users/UsersTableHead";
 import UsersTableRow from "@/components/Letterlock/Users/UsersTableRow";
 
 export default function Users() {
-  const [hideInstallOnlyUsers, setHideInstallOnlyUsers] = useState(false);
   const [users, setUsers] = useState([] as (Array<any>));
   const [sortField, setSortField] = useState(localStorage.getItem('sortField') || 'username');
-  const [sortDirection, setSortDirection] = useState(localStorage.getItem('sortDirection') || 'asc');
+  const [sortDirection, setSortDirection] = useState(localStorage.getItem('sortDirection') || 'desc');
+  const [showGenuineUsersOnly, setShowGenuineUsersOnly] = useState(localStorage.getItem('showGenuineUsersOnly') === 'true');
+  const testUserIds = ['81845c27-18fb-4a7b-8fb6-9046c949deb7', '9e5a2c95-4244-4a2a-87bb-3cdb377c67e7', '11fd76ee-7cc5-4adb-bac0-3aa7051515ae', '79eb1e98-9c2f-4133-84cc-584ed8cebef2'];
 
   useEffect(() => {
     const getUsers = async (): Promise<void> => {
@@ -26,16 +27,20 @@ export default function Users() {
   useEffect(() => {
     localStorage.setItem('sortField', sortField);
     localStorage.setItem('sortDirection', sortDirection);
-  }, [sortField, sortDirection]);
+    localStorage.setItem('showGenuineUsersOnly', showGenuineUsersOnly);
+  }, [sortField, sortDirection, showGenuineUsersOnly]);
 
   const handleSort = (field: string) => {
-    const isAsc = sortField === field && sortDirection === 'asc';
-    setSortDirection(isAsc ? 'desc' : 'asc');
+    const isSameField = sortField === field;
+    const newDirection = isSameField ? (sortDirection === 'asc' ? 'desc' : 'asc') : 'desc';
+    setSortDirection(newDirection);
     setSortField(field);
   };
 
-  const filteredUsers = hideInstallOnlyUsers
-    ? users.filter(user => user.levels_completed_count > 1)
+  const filteredUsers = showGenuineUsersOnly
+    ? users.filter((user) => {
+        return user.levels_completed_count > 1 && !testUserIds.includes(user.user_id);
+      })
     : users;
 
   const sortedUsers = [...filteredUsers].sort((a, b) => {
@@ -51,13 +56,8 @@ export default function Users() {
       bValue = b[sortField];
     }
 
-    // Handle date fields
-    if (sortField === 'updated_at' || sortField === 'created_at') {
-      aValue = new Date(aValue.split('/').reverse().join('-')).getTime();
-      bValue = new Date(bValue.split('/').reverse().join('-')).getTime();
-    }
     // Handle numeric fields stored as strings
-    else if (!isNaN(aValue) && !isNaN(bValue)) {
+    if (!isNaN(aValue) && !isNaN(bValue)) {
       aValue = parseFloat(aValue);
       bValue = parseFloat(bValue);
     }
@@ -73,13 +73,13 @@ export default function Users() {
   });
 
   return (
-    <div className="grow flex flex-col px-10 py-10 overflow-hidden">
-      <div className="flex justify-between items-center pb-10">
-        <h1 className="text-5xl font-semibold text-ll-orange">Users</h1>
+    <div className="grow flex flex-col px-10 py-5 overflow-hidden">
+      <div className="w-full flex justify-end items-center pb-5">
+        {/* <h1 className="text-5xl font-semibold text-ll-orange">Users</h1> */}
         <button
-          className="bg-blue-500 text-white px-4 py-2 rounded"
-          onClick={() => setHideInstallOnlyUsers(!hideInstallOnlyUsers)}>
-          {hideInstallOnlyUsers ? "Show All Users" : "Hide Install Only Users"}
+          className="w-48 bg-blue-500 text-white text-xs px-2 py-2 rounded"
+          onClick={() => setShowGenuineUsersOnly(!showGenuineUsersOnly)}>
+          {showGenuineUsersOnly ? "Show All Users" : "Show Genuine Users Only"}
         </button>
       </div>
 
@@ -88,9 +88,9 @@ export default function Users() {
         {sortedUsers.length ? (
           sortedUsers.map((user, index) => (
             <UsersTableRow
-              key={user.id}
+              key={user.user_id}
               index={index + 1}
-              id={user.id}
+              id={user.user_id}
               username={user.username}
               deviceModel={user.device_model}
               levelsCompleted={user.levels_completed_count}
@@ -100,6 +100,12 @@ export default function Users() {
               deviceOS={user.device_os}
               updatedAt={user.updated_at}
               createdAt={user.created_at}
+              levelAttempts1Day={user.level_attempts_1_day}
+              levelAttempts7Days={user.level_attempts_7_days}
+              levelAttempts28Days={user.level_attempts_28_days}
+              levelSuccesses1Day={user.level_successes_1_day}
+              levelSuccesses7Days={user.level_successes_7_days}
+              levelSuccesses28Days={user.level_successes_28_days}
             />
           ))
         ) : (

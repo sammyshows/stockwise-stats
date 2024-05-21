@@ -31,7 +31,7 @@ export default function Insights() {
 
   return (
     <div className="grow px-10 py-10 overflow-scroll bg-slate-100">
-      <h1 className="text-5xl pb-10 font-semibold text-blue-600">Insights</h1>
+      {/* <h1 className="text-5xl pb-10 font-semibold text-blue-600">Insights</h1> */}
 
       <div className="flex flex-col">
         <div className="flex">

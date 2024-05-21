@@ -60,21 +60,21 @@ export default function AdsStats(props) {
                   <p className="text-slate-500 text-xs font-bold">24 hr</p>
                   <p className="relative w-min text-4xl text-medium">
                     { levelSuccesses1Day }
-                    <span className="absolute -top-0.5 -right-3.5 text-base text-gray-400">{ levelAttempts1Day }</span>
+                    <span className="absolute -top-0.5 ml-0.5 text-base text-gray-400">{ levelAttempts1Day }</span>
                   </p>
                 </div>
                 <div>
                   <p className="text-slate-500 text-xs font-bold">7 days</p>
                   <p className="relative w-min text-4xl text-medium">
                     { levelSuccesses7Days }
-                    <span className="absolute -top-0.5 -right-3.5 text-base text-gray-400">{ levelAttempts7Days }</span>
+                    <span className="absolute -top-0.5 ml-0.5 text-base text-gray-400">{ levelAttempts7Days }</span>
                   </p>
                 </div>
                 <div>
                   <p className="text-slate-500 text-xs font-bold">28 days</p>
                   <p className="relative w-min text-4xl text-medium">
                     { levelSuccesses28Days }
-                    <span className="absolute -top-0.5 -right-3.5 text-base text-gray-400">{ levelAttempts28Days }</span>
+                    <span className="absolute -top-0.5 ml-0.5 text-base text-gray-400">{ levelAttempts28Days }</span>
                   </p>
                 </div>
               </div>

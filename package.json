@@ -17,6 +17,7 @@
     "autoprefixer": "^10.4.13",
     "bignumber.js": "^9.1.1",
     "cookie": "^0.6.0",
+    "dayjs": "^1.11.11",
     "flowbite": "^1.6.3",
     "flowbite-react": "^0.3.8",
     "jsonwebtoken": "^9.0.2",
