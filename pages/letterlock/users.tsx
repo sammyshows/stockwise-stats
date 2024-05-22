@@ -27,7 +27,7 @@ export default function Users() {
   useEffect(() => {
     localStorage.setItem('sortField', sortField);
     localStorage.setItem('sortDirection', sortDirection);
-    localStorage.setItem('showGenuineUsersOnly', showGenuineUsersOnly);
+    localStorage.setItem('showGenuineUsersOnly', showGenuineUsersOnly.toString());
   }, [sortField, sortDirection, showGenuineUsersOnly]);
 
   const handleSort = (field: string) => {
