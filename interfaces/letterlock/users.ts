@@ -6,6 +6,7 @@ interface UsersTableRowProp {
   zeroLivesCount: number,
   letterlockVersion: string,
   username: string,
+  testUser: boolean,
   deviceModel: string,
   deviceOS: string,
   updatedAt: string,
@@ -15,7 +16,8 @@ interface UsersTableRowProp {
   levelAttempts28Days: number,
   levelSuccesses1Day: number,
   levelSuccesses7Days: number,
-  levelSuccesses28Days: number
+  levelSuccesses28Days: number,
+  getUsers: () => void
 }
 
 export type { UsersTableRowProp }

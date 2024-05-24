@@ -8,19 +8,19 @@ export default function Users() {
   const [sortField, setSortField] = useState(localStorage.getItem('sortField') || 'username');
   const [sortDirection, setSortDirection] = useState(localStorage.getItem('sortDirection') || 'desc');
   const [showGenuineUsersOnly, setShowGenuineUsersOnly] = useState(localStorage.getItem('showGenuineUsersOnly') === 'true');
-  const testUserIds = ['81845c27-18fb-4a7b-8fb6-9046c949deb7', '9e5a2c95-4244-4a2a-87bb-3cdb377c67e7', '11fd76ee-7cc5-4adb-bac0-3aa7051515ae', '79eb1e98-9c2f-4133-84cc-584ed8cebef2'];
+
+  const getUsers = async (): Promise<void> => {
+    const response = await fetch('/api/letterlock-users-read', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const res = await response.json();
+    setUsers(res.users);
+  };
 
   useEffect(() => {
-    const getUsers = async (): Promise<void> => {
-      const response = await fetch('/api/letterlock-users-read', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      const res = await response.json();
-      setUsers(res.users);
-    };
     getUsers();
   }, []);
 
@@ -38,9 +38,7 @@ export default function Users() {
   };
 
   const filteredUsers = showGenuineUsersOnly
-    ? users.filter((user) => {
-        return user.levels_completed_count > 1 && !testUserIds.includes(user.user_id);
-      })
+    ? users.filter((user) => !user.test_user)
     : users;
 
   const sortedUsers = [...filteredUsers].sort((a, b) => {
@@ -92,6 +90,7 @@ export default function Users() {
               index={index + 1}
               id={user.user_id}
               username={user.username}
+              testUser={user.test_user}
               deviceModel={user.device_model}
               levelsCompleted={user.levels_completed_count}
               adsWatchedCount={user.ads_watched_lives + user.ads_watched_moves}
@@ -106,6 +105,7 @@ export default function Users() {
               levelSuccesses1Day={user.level_successes_1_day}
               levelSuccesses7Days={user.level_successes_7_days}
               levelSuccesses28Days={user.level_successes_28_days}
+              getUsers={getUsers}
             />
           ))
         ) : (

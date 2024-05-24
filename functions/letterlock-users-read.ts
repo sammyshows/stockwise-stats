@@ -6,6 +6,7 @@ const handler: Handler = async (event, context) => {
   const users = await client`
     SELECT 
       lus.user_id,
+      test_user,
       (SELECT COUNT(*) FROM jsonb_object_keys(CAST(level_history AS jsonb))) AS levels_completed_count,
       ads_watched_for_lives AS ads_watched_lives,
       ads_watched_for_moves AS ads_watched_moves,
