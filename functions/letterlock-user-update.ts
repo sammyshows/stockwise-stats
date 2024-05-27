@@ -3,6 +3,9 @@ const client = require("../database/client.ts")
 
 const handler: Handler = async (event, context) => {
   try {
+    if (!event.body)
+      return { statusCode: 400, body: 'Invalid request, missing the parameter body.' }
+
     const { user } = JSON.parse(event.body)
   
     await client`
