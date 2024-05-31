@@ -38,7 +38,7 @@ export default function Users() {
   };
 
   const filteredUsers = showGenuineUsersOnly
-    ? users.filter((user) => !user.test_user)
+    ? users.filter((user) => !user.test_user && user.levels_completed_count > 1)
     : users;
 
   const sortedUsers = [...filteredUsers].sort((a, b) => {
